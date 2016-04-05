@@ -25,7 +25,6 @@ RUN DEBIAN_FRONTEND=noninteractive dpkg-reconfigure locales && \
 WORKDIR /project
 RUN git clone -b ECL-16.1.2 --recursive --depth=1 https://gitlab.com/embeddable-common-lisp/ecl.git
 WORKDIR /project/ecl
-RUN git checkout ECL-16.1.2
 RUN ./configure
 RUN make all install
 WORKDIR /project
@@ -33,4 +32,4 @@ RUN rm -rf /project/ecl
 
 ENV LC_ALL C.UTF-8
 
-
+CMD ["ecl"]
